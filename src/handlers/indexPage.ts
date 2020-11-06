@@ -1,9 +1,10 @@
 import { Request } from 'express';
 import { RenderViewResponse } from '../RenderViewResponse';
+import { getNotDoneTodoItems } from '../gateways/todos';
 
 export const handler = async (request: Request) => {
-  return new RenderViewResponse('index', {
-    title: 'hello',
-    message: 'world',
+  const todoItems = await getNotDoneTodoItems();
+  return RenderViewResponse.fromView('todoList', {
+    todoItems,
   });
 };
