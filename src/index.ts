@@ -13,6 +13,8 @@ app.set('views', path.resolve(__dirname, '../src/views'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.static(path.resolve(__dirname, '../public')));
+
 app.use(router);
 
 app.listen(PORT, () => {

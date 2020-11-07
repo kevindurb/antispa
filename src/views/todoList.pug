@@ -1,4 +1,5 @@
 extends layout
+include icons
 
 block content
   form(method='POST', action='/todos')
@@ -9,9 +10,10 @@ block content
 
   ul.list-group
     each item in todoItems
-      a.list-group-item.list-group-item-action(href=`/todos/${item.id}`)= item.label
-        form.float-right.mb-0(method='POST', action=`/todos/${item.id}/done`)
-          input.btn.btn-secondary.float-right.btn-sm(
-            type='submit',
-            value='Mark Done'
-          )
+      .list-group-item.d-flex.align-items-center
+        .flex-grow-1.mb-0= item.label
+        .btn-group.btn-group-sm
+          a.btn.btn-info(href=`/todos/${item.id}`)
+            +icon('pencil')
+          a.btn.btn-success(href=`/todos/${item.id}`)
+            +icon('check2')
