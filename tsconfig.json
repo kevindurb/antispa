@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "preserveWatchOutput": true,
     "strict": true,
     "resolveJsonModule": true,
     "alwaysStrict": true,

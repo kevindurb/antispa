@@ -10,10 +10,13 @@ block content
 
   ul.list-group
     each item in todoItems
-      .list-group-item.d-flex.align-items-center
+      .list-group-item.d-flex.align-items-center(
+        data-controller='todo-list-item',
+        data-todo-list-item-id=item.id
+      )
         .flex-grow-1.mb-0= item.label
         .btn-group.btn-group-sm
           a.btn.btn-info(href=`/todos/${item.id}`)
             +icon('pencil')
-          a.btn.btn-success(href=`/todos/${item.id}`)
+          a.btn.btn-success(href='#', data-action='todo-list-item#markDone')
             +icon('check2')

@@ -1,5 +1,7 @@
 {
   "watch": [
-    "./dist"
-  ]
+    "./dist",
+    "./public"
+  ],
+  "delay": 500
 }
