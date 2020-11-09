@@ -12,11 +12,10 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "dist",
-    "rootDir": "src",
+    "rootDir": ".",
     "baseUrl": ".",
     "paths": {
       "*": ["node_modules/*"]
     }
-  },
-  "include": ["src/**/*"]
+  }
 }
