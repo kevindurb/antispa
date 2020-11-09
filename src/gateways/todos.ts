@@ -35,6 +35,7 @@ export const createTodo = async (
     id: uuid(),
     label: '',
     done: false,
+    due: null,
     ...data,
   };
   await conn('todoItems').insert(todoItem);
