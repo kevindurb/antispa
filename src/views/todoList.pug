@@ -19,7 +19,8 @@ block content
             a.badge.badge-secondary.mx-1(
               href=`/?due=${item.due}`,
               data-controller='date-format',
-              data-date-format-value=item.due
+              data-date-format-value=item.due,
+              data-target='date-format.content'
             )
         .btn-group.btn-group-sm
           a.btn.btn-info(href=`/todos/${item.id}`)
