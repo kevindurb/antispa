@@ -16,7 +16,11 @@ block content
       )
         .flex-grow-1.mb-0= item.label
           if item.due
-            .badge.badge-secondary.mx-1= item.due
+            a.badge.badge-secondary.mx-1(
+              href=`/?due=${item.due}`,
+              data-controller='date-format',
+              data-date-format-value=item.due
+            )
         .btn-group.btn-group-sm
           a.btn.btn-info(href=`/todos/${item.id}`)
             +icon('pencil')

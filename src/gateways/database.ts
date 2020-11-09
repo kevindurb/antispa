@@ -30,7 +30,7 @@ export const config: Knex.Config = {
 
 export const getConnection = () => {
   if (!connection) {
-    connection = knex(config);
+    connection = knex(config).on('query', console.log.bind(console));
   }
 
   return connection;

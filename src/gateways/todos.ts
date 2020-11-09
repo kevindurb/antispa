@@ -1,6 +1,15 @@
+import * as dateFns from 'date-fns';
 import { v4 as uuid } from 'uuid';
 import { getConnection } from './database';
 import { TodoItem } from '../types/TodoItem';
+
+export interface TodoItemsFilter {
+  due?: Date | 'today';
+  done?: boolean;
+}
+
+const buildDueFilter = (due: Date | 'today') =>
+  due === 'today' ? 'now()' : dateFns.format(due, 'yyyy-MM-dd');
 
 export const getTodoItem = (id: string): Promise<TodoItem> =>
   getConnection()
@@ -15,10 +24,19 @@ export const getTodoItem = (id: string): Promise<TodoItem> =>
         }))[0],
     );
 
-export const getNotDoneTodoItems = () =>
+export const getNotDoneTodoItems = (filter?: TodoItemsFilter) =>
   getConnection()
     .from('todoItems')
-    .where('done', false)
+    .where((builder) => {
+      console.log(filter);
+      if (filter?.due) {
+        builder.where('due', buildDueFilter(filter.due));
+      }
+
+      if (filter && 'done' in filter) {
+        builder.where('done', filter.done);
+      }
+    })
     .then((items) =>
       items.map((item) => ({
         ...item,

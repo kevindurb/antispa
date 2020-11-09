@@ -1,3 +1,4 @@
+import joi from 'joi';
 import { Request, Response } from 'express';
 import { ResponseHandler } from './ResponseHandler';
 
@@ -9,12 +10,25 @@ export const wrapHandler = (handler: AsyncRequestHandler) => async (
   request: Request,
   response: Response,
 ) => {
-  const result = await handler(request);
+  try {
+    const result = await handler(request);
 
-  if (result) {
-    return result.handleResponse(response);
+    if (result) {
+      return result.handleResponse(response);
+    }
+
+    response.status(200);
+    response.end();
+  } catch (e) {
+    if (e instanceof joi.ValidationError) {
+      response.status(400);
+      response.json({
+        message: e.message,
+      });
+    } else {
+      console.error(e);
+      response.status(500);
+      response.end();
+    }
   }
-
-  response.sendStatus(200);
-  response.end();
 };
