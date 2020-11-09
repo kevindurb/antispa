@@ -7,7 +7,7 @@ module.exports = {
   entry: './src/web.ts',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
     new webpack.DefinePlugin({

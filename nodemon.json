@@ -1,7 +1,6 @@
 {
-  "watch": [
-    "./dist",
-    "./public"
-  ],
-  "delay": 500
+  "watch": ["./src", "./public"],
+  "delay": 500,
+  "ext": ".ts",
+  "exec": "ts-node ./src"
 }

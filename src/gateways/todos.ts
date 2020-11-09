@@ -1,5 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import { getConnection } from './database';
+import { TodoItem } from '../types/TodoItem';
 
 export const getTodoItem = (id: string): Promise<TodoItem> =>
   getConnection()
