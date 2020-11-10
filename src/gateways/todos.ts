@@ -53,8 +53,8 @@ export const createTodo = async (
     id: uuid(),
     label: '',
     done: false,
-    due: null,
     ...data,
+    due: null,
   };
   await conn('todoItems').insert(todoItem);
 

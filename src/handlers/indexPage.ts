@@ -22,7 +22,7 @@ export const handler = async (request: Request) => {
   return RenderViewResponse.fromView('todoList', {
     todoItems: todoItems.map((item) => ({
       ...item,
-      due: item.due ? dateFns.formatISO(dateFns.parseISO(item.due)) : null,
+      due: item.due ? dateFns.formatISO(dateFns.fromUnixTime(item.due / 1000)) : null,
     })),
   });
 };

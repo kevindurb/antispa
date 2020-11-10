@@ -6,7 +6,7 @@ import { TodoItem } from '../types/TodoItem';
 
 const validator = joi.object({
   label: joi.string().min(1),
-  due: joi.date().min('now'),
+  due: joi.date().iso().min('now'),
 });
 
 export const handler = async (request: Request) => {

@@ -1,8 +1,7 @@
-'use strict';
-const webpack = require('webpack');
-const path = require('path');
+import webpack from 'webpack';
+import path from 'path';
 
-module.exports = {
+const config: webpack.Configuration = {
   mode: 'development',
   entry: './src/web.ts',
   output: {
@@ -20,6 +19,9 @@ module.exports = {
       {
         test: /\.ts$/,
         loader: 'ts-loader',
+        options: {
+          configFile: 'tsconfig.web.json',
+        },
       },
     ],
   },
@@ -27,3 +29,5 @@ module.exports = {
     extensions: ['.ts', '.js'],
   },
 };
+
+export default config;
