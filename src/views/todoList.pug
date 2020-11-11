@@ -4,15 +4,25 @@ include icons
 block content
   form(method='POST', action='/todos')
     .input-group.my-3
-      input.form-control(type='text', name='label', required)
+      input.form-control(
+        type='text',
+        name='label',
+        required,
+        testID='addTodoInput'
+      )
       .input-group-append
-        input.btn.btn-primary(type='submit', value='Add')
+        input.btn.btn-primary(
+          type='submit',
+          value='Add',
+          testID='addTodoSubmit'
+        )
 
   ul.list-group
     each item in todoItems
       .list-group-item.d-flex.align-items-center(
         data-controller='todo-list-item',
-        data-todo-list-item-id=item.id
+        data-todo-list-item-id=item.id,
+        testID='todoItem'
       )
         .flex-grow-1.mb-0= item.label
           if item.due

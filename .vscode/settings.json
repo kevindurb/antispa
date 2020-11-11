@@ -1,0 +1,11 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "antispa",
+      "database": "${workspaceFolder:antispa}/db.sqlite"
+    }
+  ],
+  "sqltools.useNodeRuntime": true
+}
